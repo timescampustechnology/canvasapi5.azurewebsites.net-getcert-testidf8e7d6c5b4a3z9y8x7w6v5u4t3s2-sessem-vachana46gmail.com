@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=540, initial-scale=1.0">
+    <title>Auto Image Display</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background: white;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            overflow-x: hidden;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+        img {
+            display: none;
+            width: 100%;  
+            height: auto; 
+            object-fit: contain;
+        }
+        .desktop-view {
+            display: block;
+            max-width: 1606px;
+        }
+        .mobile-container {
+            display: none;
+            width: 100%;
+        }
+        .mobile-view {
+            display: block;
+            max-width: 768px;
+        }
+        
+        /* ✅ Make `mobile-alt.png` fit the screen */
+        .mobile-alt {
+            display: none;
+            width: 100vw;
+            height: auto; /* Let the height adjust to maintain aspect ratio */
+            object-fit: contain; /* Ensure the whole image is visible */
+        }
+
+        /* Show "mobile-alt" when resizing desktop browser (540px wide) */
+        @media screen and (max-width: 1024px) and (min-width: 541px) {
+            .desktop-view {
+                display: none;
+            }
+            .mobile-alt {
+                display: block;
+            }
+        }
+
+        /* Show "mobile.png" on actual mobile devices */
+        @media screen and (max-width: 540px) {
+            .desktop-view {
+                display: none;
+            }
+            .mobile-container {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="dm sahana desktop.png" alt="Desktop Screenshot" class="desktop-view">
+    <img src="dm sahana alt11.png" alt="Resized Browser Mobile View" class="mobile-alt">
+    <div class="mobile-container">
+        <img src="dm sahana mobile.png" alt="Mobile Screenshot" class="mobile-view">
+    </div>
+</body>
+</html>
